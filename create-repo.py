@@ -37,6 +37,17 @@ def getGitHubAccessToken(config_file_path, github_access_token_key):
         return access_token
 
 def main():
+    
+    #GitHub Access Token
+    #Note: Save the token in a config json file in the user's home directory. 
+    #Your file should look like this:
+    #{"GitHubAccessToken" : "ghp_fgdkfh36437GJH"}
+
+    #Path to the configuration json file that stores the access token for GitHub API
+    config_file_path = r"C:\Users\Syscom\.config\access-tokens.json"
+
+    #Name of the key that has access token as value in the json file
+    github_access_token_key = "GitHubAccessToken"
 
     #Get the name of the new repository from command-line args
     if len(sys.argv) != 2:
@@ -48,17 +59,6 @@ def main():
 
     #GitHub API URL to initialize remote repository
     github_repo_API_URL = "https://api.github.com/user/repos"
-    
-    #GitHub Access Token
-    #Note: Save the token in a config json file in the user's home directory. 
-    #Your file should look like this:
-    #{"GitHubAccessToken" : "ghp_fgdkfh36437GJH"}
-
-    #Path to the configuration file that stores the access token for GitHub API
-    config_file_path = r"C:\Users\Syscom\.config\access-tokens.json"
-
-    #Name of the key that has access token as value
-    github_access_token_key = "GitHubAccessToken"
 
     github_access_token = getGitHubAccessToken(config_file_path, github_access_token_key)
 
