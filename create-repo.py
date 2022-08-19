@@ -1,6 +1,5 @@
 #import required packages
 import sys
-import configparser
 import requests
 import os
 import json
