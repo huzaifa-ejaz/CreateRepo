@@ -55,14 +55,6 @@ def main():
 
     #Initilize local repository
 
-    is_folder_empty = True
-    #Get the current folder we are in
-    cwd = os.getcwd()
-    #Check if there are files in these folder
-    if len(os.listdir(cwd)) > 0 :
-        #If so, set the boolean flag
-        is_folder_empty = False
-
     #Initialize a local repository in that folder with the master branch
     os.system("git init")
 
@@ -71,21 +63,20 @@ def main():
     #Set the remote on the local repository with name origin and URL from above
     os.system(f"git remote add origin {remote_url}")
 
-    #If there are files in the current folder, stage, commit and push them with a suitable message
+    #Add README.md file
+    os.system(f"echo {repo_name} > README.md")
 
     #TODO: Create a readme then git add . then commit and push; no need to check whether the folder is empty
     first_commit_message = "Initial commit"
-    #If the flag was found to be set.
-    if not is_folder_empty:
-        #Stage all the files and folders in the current directory
-        os.system("git add .")
-        #Commit them to the current branch(master) with a suitable commit message
-        os.system(f'git commit -m "{first_commit_message}"')
-        
-        #Push
-        #Using the -u tag so that git record that work on local master branch...
-        #...needs to pushed to origin master branch
-        os.system("git push -u origin master")
+
+    #Stage all the files and folders in the current directory
+    os.system("git add .")
+    #Commit them to the current branch(master) with a suitable commit message
+    os.system(f'git commit -m "{first_commit_message}"')
+    
+    #Push
+    #Using the -u tag so that local master branch track origin master branch
+    os.system("git push -u origin master")
 
     print("Repository created.")
 
